@@ -2,10 +2,20 @@ version: "3.8"
 
 services:
   php:
+    container_name: tp-notee-php
     image: php:8.1.2-apache
+    ports:
+      - 8000:80
 
   db:
+    container_name: tp-notee-db
     image: postgres:9.6.24-alpine3.15
+    restart: always
+    environment:
+      - POSTGRES_PASSWORD=password
+    ports:
+      - 9000:5432
 
   adminer:
+    container_name: tp-notee-adminer
     image: adminer:4.8.1
